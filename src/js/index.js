@@ -15,3 +15,20 @@ search_x.addEventListener("click",function(){
 	search_x.classList.remove("visible");
 	search_input.value="";
 });
+
+
+
+var menu_btn = document.querySelector('.menu_button');
+var menu = document.querySelector('.menu');
+var menu_x = document.querySelector('.menu-x');
+var body = document.querySelector('body');
+
+menu_btn.addEventListener("click",function(){
+	menu.classList.add("up");
+	body.classList.add("scroll");
+});
+
+menu_x.addEventListener("click",function(){
+	menu.classList.remove("up");
+	body.classList.remove("scroll");
+});

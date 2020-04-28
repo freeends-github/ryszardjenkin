@@ -4,6 +4,12 @@
     box-sizing: border-box;
     outline:none;
 }
+body{
+    overflow-x:hidden;
+    &.scroll{
+        overflow:hidden;
+    }
+}
 li{
     list-style:none;
 }
@@ -26,8 +32,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .hero_section{
     width:100%;
-    height:1000px;
+    // height:1000px;
+    height:100vh;
     position:relative;
+    overflow: hidden;
     .header{
         position:absolute;
         top:65px;
@@ -39,11 +47,15 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         align-items: center;
         z-index:2;
         .header_headline{
+            color:#fff;
+            &.color{
+                color:#000;
+            }
             h1{
                 text-align: left;
                 font: 400 25px/33px Open Sans;
                 letter-spacing: 13.75px;
-                color: #FFFFFF;
+                color: inherit;
                 text-transform: uppercase;
                 opacity: 1;
             }
@@ -143,9 +155,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
                     }
                 }
             }
-            .menu{
-                margin-left:20px;
-                .menu_button{
+            .menu_button{
+                    margin-left:30px;
                     border:none;
                     background:transparent;
                     outline:none;
@@ -185,7 +196,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
                             width:25px;
                         }
                     }
-                }
             }
         }
     }
@@ -216,6 +226,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         .hero_info{
             position:relative;
             z-index:2 !important;
+            width:unset !important;
             h2{
                 font: 700 60px/79px Roboto;
                 letter-spacing: 0px;
@@ -240,20 +251,119 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
             width:100%;
             height:100%;
             position: relative;
-            background-position:center bottom;
-            background-size: cover;
-            background-repeat: no-repeat;
+            // background-position:center bottom;
+            // background-size: cover;
+            // background-repeat: no-repeat;
             z-index:1 !important;
+            img{
+                width:100%;
+                height:100%;
+                object-fit:cover;
+            }
         }
-        .hero_item1{
-            background-image: url(../img/edgar-m-PV2_lE-ZrPs-unsplash3.png);
+        // .hero_item1{
+        //     // background-image: url(../img/edgar-m-PV2_lE-ZrPs-unsplash3.png);
+        // }
+        // .hero_item2{
+        //     // background-image: url(../img/jake-nackos-GxYYBY_9Ggk-unsplash.png);
+        // }
+        // .hero_item3{
+        //     // background-image: url(../img/willian-justen-de-vasconcellos-5-P_43Nw6H0-unsplash.png);
+        //     // background-position:center top;
+        // }
+    }
+    .menu{
+        position: absolute;
+        right:0;
+        top:0;
+        height:100%;
+        width:33%;
+        min-width:637px;
+        // width:clamp(500px,33%,637px);
+        background-color:#000;
+        z-index:10;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        transform: translateY(100%);
+        transition:all 0.6s ease-out;
+        &.up{
+            transform:translateY(0);
         }
-        .hero_item2{
-            background-image: url(../img/jake-nackos-GxYYBY_9Ggk-unsplash.png);
+        .menu-x{
+            position:absolute;
+            top:100px;
+            left:100px;
+            width:30px;
+            height:30px;
+            background:transparent;
+            outline:none;
+            border:none;
+            .first_line{
+                width:30px;
+                height:2px;
+                transform:rotate(45deg) translateY(-50%);
+                background-color:#fff;
+                position:absolute;
+                left:0;
+                top:50%;
+            }
+            .second_line{
+                width:30px;
+                height:2px;
+                transform:rotate(-45deg) translateY(-50%);
+                background-color:#fff;
+                position:absolute;
+                left:0;
+                top:50%;
+            }
         }
-        .hero_item3{
-            background-image: url(../img/willian-justen-de-vasconcellos-5-P_43Nw6H0-unsplash.png);
-            background-position:center top;
+        .menu_list{
+            li{
+                text-align:center;
+                a{
+                    text-align: center;
+                    font: 400 30px/40px Open Sans;
+                    letter-spacing: 15px;
+                    color: #FFFFFF;
+                    opacity: 1;
+                    padding-bottom:30px;
+                    margin-bottom:50px;
+                    display:inline-block;
+                    position:relative;
+                    transition:all 0.3s ease-in;
+                    &:hover,&:active{
+                        letter-spacing: 25px;
+                    }
+                    &:last-child{
+                        margin-top:0;
+                    }
+                    &::after{
+                        content:"";
+                        display:block;
+                        position:absolute;
+                        bottom:0;
+                        left:50%;
+                        transform: translateX(-50%);
+                        width:255px;
+                        height:1px;
+                        background-color:#fff;
+                    }
+                }
+            }
+        }
+        .menu_media{
+            position:absolute;
+            bottom:103px;
+            a{
+                color:rgba(255,255,255,.6);
+                i{
+                    font-size:25px;
+                }
+                &:last-child{
+                    margin-left:33px;
+                }
+            }
         }
     }
 }
@@ -367,7 +477,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
             position:absolute;
             bottom:-50%;
             left:50%;
-            width:30%;
+            width:580px;
             height:43px;
             transform: translateX(-50%);
             background-color:#8E8E8E;
@@ -386,6 +496,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     .portfolio_container{
         margin-top:20px;
         display:grid;
+        // grid-template-columns: repeat(auto-fit,minmax(384px,1fr));
         grid-template-columns: repeat(5,1fr);
         grid-row-gap: 1.5px;
         .portfolio_item{
@@ -460,7 +571,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     overflow:hidden;
     background-color:#F8F8F8;
     .form_container{
-        width:50%;
+        // width:50%;
         margin:228px auto 433px auto;
         .form_headline{
             h1{
@@ -482,13 +593,12 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
             align-items:center;
             justify-content:flex-start;
             .email{
-                width:100%;
+                width:935px;
                 height:88px;
-                padding:33px 45px;
+                padding:0 45px;
                 font: 700 20px/50px Roboto;
                 letter-spacing: 5.72px;
                 color: #000000;
-                text-transform: uppercase;
                 opacity: 0.5;
                 background:transparent;
                 outline:none;
@@ -513,6 +623,9 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
                 border:1px solid rgba(142,142,142,0.15);
                 background-color:rgba(142,142,142,0.15);
                 outline:none;
+                &:hover,&:active{
+                    background-color:rgba(142,142,142,0.5);
+                }
             }
         }
     }
@@ -529,6 +642,315 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
             margin:0 45px;
             i{
                 font-size:42px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .hero_section{
+        .hero_info-container{
+            bottom: 18%;
+            left: 15%;
+            .hero_info{
+                h2{
+                    font: 700 50px/57px Roboto
+                }
+            }
+        }
+        .hero_buttons{
+            bottom: 8%;
+            left: 15%;
+        }
+        .hero_items{
+            .hero_item1{
+                background-position:80% center;
+            }
+        }
+    }
+    .slider_section{
+        .slider_container{
+            flex-flow:column;
+            width:85%;
+            margin:150px auto 40px auto;
+            .big_slider{
+                width:100%;
+                margin-top:30px;
+            }
+            .small_slider-container{
+                width:100%;
+                height:unset;
+                flex-flow:row;
+                justify-content: flex-start;
+                overflow:hidden;
+                margin-top:30px;
+                .up_btn,.down_btn{
+                    i{
+                        transform:rotate(-90deg);
+                    }
+                }
+                .small_slider{
+                    margin:0;
+                    .slick-list{
+                        display:flex;
+                        .slick-track{
+                            display:flex;
+                            align-items:center;
+                            justify-content:flex-start;
+                            .slider_item{
+                                margin:0 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .portfolio_section{
+        .portfolio_container{
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+        }
+    }
+    .about_section{
+        .about_container{
+            flex-flow:column;
+            .about_info{
+                width:100%;
+                margin-top:80px;
+                h1{
+                    text-align:center;
+                }
+                h2{
+                    margin-top:30px;
+                    text-align:center;
+                }
+            }
+        }
+    }
+    .form_section{
+        .form_container{
+            width:90%;
+            .form{
+                .email{
+                    width:100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:800px){
+    .hero_section{
+        .header{
+            width:90%;
+            left:5%;
+            right:5%;
+            flex-flow:column;
+            .header_items{
+                margin-top:30px;
+                width:100%;
+                justify-content:flex-end;
+            }
+        }
+        .menu{
+            width:100%;
+            min-width:unset;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+        }
+    }
+    .portfolio_section{
+        .portfolio_headline{
+            &::before{
+                width:480px;
+            }
+            h1{
+                font: 700 25px/39px Roboto
+            }
+        }
+    }
+    .form_section{
+        .form_container{
+            .form_headline{
+                h1{
+                    font: 700 22px/45px Roboto;
+                }
+            }
+            .form{
+                margin-top:60px;
+            }
+        }
+    }
+}
+@media only screen and (max-width:670px){
+    .hero_section{
+        .menu{
+            .menu-x{
+                top:10%;
+                left:10%;
+            }
+            .menu_media{
+                bottom:7%;
+            }
+        }
+        .hero_info-container{
+            .hero_info{
+                h2{
+                    font: 700 36px/50px Roboto;
+                }
+            }
+        }
+    }
+    .portfolio_section{
+        .portfolio_headline{
+            &::before{
+                display:none;
+            }
+            h1{
+                font: 700 25px/39px Roboto;
+                letter-spacing:20px;
+            }
+        }
+    }
+    .about_section{
+        .about_container{
+            width:85%;
+            .about_info{
+                h1{
+                    font: 700 25px/35px Roboto;
+                    letter-spacing:20px;
+                }
+            }
+        }
+    }
+    .form_section{
+        .form_container{
+            margin:200px auto;
+            .form_headline{
+                h1{
+                    font: 700 22px/45px Roboto;
+                    letter-spacing: 18px;
+                }
+            }
+            .form{
+                .email{
+                    height:60px;
+                }
+                .form_btn{
+                    padding: 12px 60px;
+                    font: 500 17px/40px Roboto;
+                }
+            }
+        }
+    }
+    .media_section{
+        .media_container{
+            a{
+                i{
+                    font-size:28px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:500px){
+    .hero_section{
+        .header{
+            top:20px;
+            .header_headline{
+                h1{
+                    font: 400 19px/24px Open Sans;
+                    letter-spacing: 8px;
+                }
+            }
+            .header_items{
+                margin-top:10px;
+            }
+        }
+        .hero_info-container{
+            bottom:20%;
+            .hero_info{
+                h2{
+                    font: 700 28px/36px Roboto;
+                }
+            }
+        }
+        .hero_buttons{
+            button{
+                i{
+                    font-size:16px;
+                }
+            }
+        }
+        .menu{
+            .menu_list{
+                li{
+                    a{
+                        font: 400 20px/31px Open Sans;
+                        padding-bottom:15px;
+                        margin-top:30px;
+                        &::after{
+                            width:220px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .slider_section{
+        .slider_container{
+            .slider_info{
+                margin:0;
+                width:100%;
+                h2{
+                    font: 400 30px/38px Roboto;
+                    text-align:center;
+                }
+                p{
+                    letter-spacing: 6px;
+                    text-align:center;
+                }
+            }
+        }
+    }
+    .portfolio_section{
+        .portfolio_headline{
+            h1{
+                letter-spacing:15px;
+            }
+        }
+    }
+    .about_section{
+        .about_container{
+            .about_info{
+                h1{
+                    letter-spacing:15px;
+                }
+            }
+        }
+    }
+    .form_section{
+        .form_container{
+            .form_headline{
+                    h1{
+                        font: 700 17px/38px Roboto;
+                        letter-spacing: 12px;
+                    }
+            }
+            .form{
+                .email{
+                    height:50px;
+                    padding:0 20px;
+                    &::placeholder{
+                        font: 700 15px/30px Roboto;
+                        letter-spacing:2px;
+                    }
+                }
+                .form_btn{
+                    padding: 12px 37px;
+                    font: 500 13px/26px Roboto;
+                }
             }
         }
     }
